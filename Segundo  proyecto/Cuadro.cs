@@ -41,11 +41,29 @@ namespace WindowsFormsApplication1
             return posicion; 
         }
 
-        //public void movimiento(Direccion d)
-        //{
-            //if (d == Direccion.izquierda)
-            // Relacionar metodo estatico con variable publica  //posicion.X--; 
-        //}
+        public void movimiento(Direccion d)
+        {
+            if (d == Cuadro.Direccion.izquierda)
+            {
+                this.posicion.X--;  
+            }
+            if (d == Cuadro.Direccion.arriba)
+            {
+                this.posicion.Y--;
+            }
+            if (d == Cuadro.Direccion.derecha)
+            {
+                this.posicion.X++;
+            }
+            if (d == Cuadro.Direccion.abajo)
+            {
+                this.posicion.Y++;
+            }
+            if (d == Cuadro.Direccion.ninguna)
+            {}
+            
+            //Relacionar metodo estatico con variable publica  //posicion.X--; 
+        }
       }
 
     /*public class Obstaculo : Elemento
