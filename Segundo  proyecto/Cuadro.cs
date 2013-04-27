@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,30 +7,50 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public class Cuadro
+    public class Elemento
     {
-        Point posicion;
-        int lado;
-        Pen contorno;
-        Color fondo;
+        public Point posicion;
+        public int lado;
+        public Pen contorno;
+        public Color fondo;
+        public Elemento(Point p,int l,Pen c,Color f)
+        {
+            posicion = p; lado = l; contorno = c; fondo = f;
+        } 
+    }
+
+    public  class Cuadro:Elemento
+    {
         public enum Estado { Estatico, Movimiento};
-        public enum Direccion {arrriba,abajo,derecha,izquierda}
+        public enum Direccion {arriba,abajo,derecha,izquierda,ninguna}
         Estado estado;
         Direccion direccion;
-
-        public Cuadro(Point p, int l, Pen c, Color f, Estado e)
+        
+        public Cuadro(Point p, int l, Pen c, Color f, Estado e, Direccion d):base (p,l,c,f)
         {
-            this.posicion = p; this.lado = l; this.contorno = c; this.fondo = f; this.estado = e;
+            this.estado = e; this.direccion = d;
         }
 
         public void Draw(PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(contorno, posicion.X - 10, posicion.Y - 10, lado, lado);
         }
+        
+        public Point getPosicion()
+        { 
+            return posicion; 
+        }
 
+        //public void movimiento(Direccion d)
+        //{
+            //if (d == Direccion.izquierda)
+            // Relacionar metodo estatico con variable publica  //posicion.X--; 
+        //}
+      }
 
+    /*public class Obstaculo : Elemento
+    {
+        
+    }*/
 
-       
-
-    }
 }
