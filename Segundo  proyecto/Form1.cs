@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +11,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        Cuadro.Direccion direccion;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,15 +28,28 @@ namespace WindowsFormsApplication1
             Point p=new Point (100,100);
             Pen a=new Pen (Color.Red);
 
-            Cuadro c = new Cuadro(p, 20, a, Color.Green, Cuadro.Estado.Estatico);
+            Cuadro c = new Cuadro(p, 10, a, Color.Green, Cuadro.Estado.Estatico,Cuadro.Direccion.ninguna);
             c.Draw(e);
-            
-
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if(e.KeyChar==46)
+            {
+                direccion=Cuadro.Direccion.izquierda;
+            }
+            if (e.KeyChar == 47)
+            {
+                direccion = Cuadro.Direccion.arriba;
+            }
+            if (e.KeyChar == 48)
+            {
+                direccion = Cuadro.Direccion.derecha;
+            }
+            if (e.KeyChar == 49)
+            {
+                direccion = Cuadro.Direccion.abajo;
+            }
         }
     }
 }
