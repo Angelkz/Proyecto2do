@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Data;
 
 namespace WindowsFormsApplication1
 {
@@ -36,33 +38,40 @@ namespace WindowsFormsApplication1
             e.Graphics.DrawRectangle(contorno, posicion.X - 10, posicion.Y - 10, lado, lado);
         }
         
-        public Point getPosicion()
-        { 
-            return posicion; 
-        }
-
         public void movimiento(Direccion d)
         {
-            if (d == Cuadro.Direccion.izquierda)
+            Timer a = new Timer();
+
+            for (int x = 0; x < 300; x++)
             {
-                this.posicion.X--;  
+                
+                if (d == Cuadro.Direccion.izquierda)
+                {                    
+                    this.posicion.X--;
+                }
+                if (d == Cuadro.Direccion.arriba)
+                {                    
+                    this.posicion.Y--;
+                }
+                if (d == Cuadro.Direccion.derecha)
+                {
+                    this.posicion.X++;
+                }
+                if (d == Cuadro.Direccion.abajo)
+                {
+                    this.posicion.Y++;                    
+                }
+                if (d == Cuadro.Direccion.ninguna)
+                { }
+                a.Start(); int contador;
+                do
+                {
+                    contador = a.Interval;
+                } while (contador == 6000);       
+                WindowsFormsApplication1.Form1.ActiveForm.Refresh();
+                a.Stop();
+                a.Dispose();
             }
-            if (d == Cuadro.Direccion.arriba)
-            {
-                this.posicion.Y--;
-            }
-            if (d == Cuadro.Direccion.derecha)
-            {
-                this.posicion.X++;
-            }
-            if (d == Cuadro.Direccion.abajo)
-            {
-                this.posicion.Y++;
-            }
-            if (d == Cuadro.Direccion.ninguna)
-            {}
-            
-            //Relacionar metodo estatico con variable publica  //posicion.X--; 
         }
       }
 

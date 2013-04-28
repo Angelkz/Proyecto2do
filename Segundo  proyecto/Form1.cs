@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
             else { direccion = Cuadro.Direccion.ninguna; }
 
             c.movimiento(direccion);
-            this.Refresh();
+            
         }
     }
 }
