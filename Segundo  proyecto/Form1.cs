@@ -19,8 +19,10 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
-            barreras.Add(new Obstaculo(new Point(100,250),20,10,new Pen(Color.Blue),Color.Blue));
-            barreras.Add(new Obstaculo(new Point(200, 250), 10, 20, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(90,250),20,10,new Pen(Color.Blue),Color.Blue));
+            barreras.Add(new Obstaculo(new Point(200, 230), 10, 30, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(180, 150), 40, 10, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(80, 150), 10, 30, new Pen(Color.Blue), Color.Blue));
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,12 +91,22 @@ namespace WindowsFormsApplication1
             }
             for (int x = 0; x < 300; x++)
             {
+                Timer a = new Timer();
+                do
+                {
+                    a.Start();
+                    a.Interval++;
+                }while (a.Interval == 10000);          
                 c.movimiento(direccion);
                 foreach (Obstaculo b in barreras)
                     b.Colicion(c);
-                this.Refresh();
-                if(c.estado==Cuadro.Estado.Estatico)
+                if(x%2==0)
+                    this.Refresh(); 
+                a.Dispose();
+                 if (c.estado == Cuadro.Estado.Estatico)
                     break;
+                
+                
             }
             
         }

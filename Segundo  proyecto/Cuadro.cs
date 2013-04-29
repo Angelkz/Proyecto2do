@@ -35,7 +35,10 @@ namespace WindowsFormsApplication1
 
         public void Draw(PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(contorno, posicion.X - 10, posicion.Y - 10, lado, lado);
+            //Image n=Image.FromFile("C:/Documents and Settings/ruben/Mis documentos/Mis imágenes/PiezaAzul.png");
+            //e.Graphics.DrawImage(n, posicion.X, posicion.Y, lado+30, lado+30);
+            //e.Graphics.DrawRectangle(contorno, posicion.X, posicion.Y, lado, lado);
+            e.Graphics.FillRectangle(new SolidBrush(fondo), posicion.X, posicion.Y, lado, lado);
         }
         
         public void movimiento(Direccion d)
@@ -75,20 +78,37 @@ namespace WindowsFormsApplication1
         }
         public void Draw(PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(contorno, posicion.X - 10, posicion.Y - 10, lado,altura);
+            //e.Graphics.DrawRectangle(contorno, posicion.X, posicion.Y, lado,altura);
+            e.Graphics.FillRectangle(new SolidBrush(fondo), posicion.X, posicion.Y, lado, altura);
         }
         public void Colicion(Cuadro cuadro)
         {
-            if (cuadro.posicion.X >= this.posicion.X && cuadro.posicion.X <= (this.posicion.X + lado) &&
-               cuadro.posicion.Y >= this.posicion.Y && cuadro.posicion.Y <= (this.posicion.Y + altura))
+            if (cuadro.posicion.X>=this.posicion.X && ((cuadro.posicion.X)+cuadro.lado) <= (this.posicion.X + lado) && (cuadro.posicion.Y+cuadro.lado)==this.posicion.Y) 
             {
-         
                 cuadro.estado = Cuadro.Estado.Estatico;
                 cuadro.direccion = Cuadro.Direccion.ninguna;
-                
+                cuadro.posicion.Y--;       
+            }
+            if (cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && (cuadro.posicion.X + cuadro.lado) == this.posicion.X)
+            {
+                cuadro.estado = Cuadro.Estado.Estatico;
+                cuadro.direccion = Cuadro.Direccion.ninguna;
+                cuadro.posicion.X--; 
+            }
+            if (cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && cuadro.posicion.X == (this.posicion.X+lado))
+            {
+                cuadro.estado = Cuadro.Estado.Estatico;
+                cuadro.direccion = Cuadro.Direccion.ninguna;
+                cuadro.posicion.X++;
+            }
+            if (cuadro.posicion.X >= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) <= (this.posicion.X + lado) && cuadro.posicion.Y == (this.posicion.Y+altura))
+            {
+                cuadro.estado = Cuadro.Estado.Estatico;
+                cuadro.direccion = Cuadro.Direccion.ninguna;
+                cuadro.posicion.Y++;
             }
             else
-            { };
+            { }; 
  
         }
 
