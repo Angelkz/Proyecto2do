@@ -12,13 +12,13 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     { 
         Cuadro.Direccion direccion;
-
-        public Cuadro c = new Cuadro(new Point(275, 25), 10, new Pen(Color.Red), Color.Green, Cuadro.Estado.Estatico, Cuadro.Direccion.ninguna);
+        public int k = 25;
+        public Cuadro c = new Cuadro(new Point(276, 26), 23, new Pen(Color.Red), Color.Green, Cuadro.Estado.Estatico, Cuadro.Direccion.ninguna);
         List<Obstaculo> barreras = new List<Obstaculo>();
         public Meta f = new Meta(new Point(325, 575), 25, 25, new Pen(Color.Red), Color.Red);
-        public Point inicio = new Point(100, 100);
-        public Escenario escenario = new Escenario(new Point(0, 0), 625, 625, new Pen(Color.Gray), Color.Gray);
-        public int k = 25;
+        public Point inicio = new Point(276, 26);
+        public Escenario escenario = new Escenario(new Point(0, 0), 625, 625, new Pen(Color.Gray), Color.White);
+        
         
         public Form1()
         {
@@ -165,7 +165,7 @@ namespace WindowsFormsApplication1
                     b.Colicion(c);
                 f.End(c);
                 escenario.Dead(c);
-                if(x%2==0)
+                if(x%5==0)
                     this.Refresh(); 
                 a.Dispose();
                  if (c.estado == Cuadro.Estado.Estatico)
@@ -182,11 +182,6 @@ namespace WindowsFormsApplication1
                     break;
                  }
             }
-            
-        }
-
-        private void Form1_Load_1(object sender, EventArgs e)
-        {
 
         }
     }

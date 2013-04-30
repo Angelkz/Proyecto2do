@@ -96,13 +96,13 @@ namespace WindowsFormsApplication1
                 cuadro.direccion = Cuadro.Direccion.ninguna;
                 cuadro.posicion.X--; 
             }
-            if (cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && cuadro.posicion.X == (this.posicion.X+lado))
+            if (cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && cuadro.posicion.X == (this.posicion.X + lado))
             {
                 cuadro.estado = Cuadro.Estado.Estatico;
                 cuadro.direccion = Cuadro.Direccion.ninguna;
                 cuadro.posicion.X++;
             }
-            if (cuadro.posicion.X >= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) <= (this.posicion.X + lado) && cuadro.posicion.Y == (this.posicion.Y+altura))
+            if (cuadro.posicion.X >= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) <= (this.posicion.X + lado) && cuadro.posicion.Y == (this.posicion.Y + altura))
             {
                 cuadro.estado = Cuadro.Estado.Estatico;
                 cuadro.direccion = Cuadro.Direccion.ninguna;
