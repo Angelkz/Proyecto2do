@@ -13,9 +13,9 @@ namespace WindowsFormsApplication1
     { 
         Cuadro.Direccion direccion;
 
-        public Cuadro c = new Cuadro(new Point(100, 100), 10, new Pen(Color.Red), Color.Green, Cuadro.Estado.Estatico, Cuadro.Direccion.ninguna);
+        public Cuadro c = new Cuadro(new Point(275, 25), 10, new Pen(Color.Red), Color.Green, Cuadro.Estado.Estatico, Cuadro.Direccion.ninguna);
         List<Obstaculo> barreras = new List<Obstaculo>();
-        public Meta f = new Meta(new Point(200, 100), 20, 20, new Pen(Color.Red), Color.Red);
+        public Meta f = new Meta(new Point(325, 575), 25, 25, new Pen(Color.Red), Color.Red);
         public Point inicio = new Point(100, 100);
         public Escenario escenario = new Escenario(new Point(0, 0), 625, 625, new Pen(Color.Gray), Color.Gray);
         public int k = 25;
@@ -23,10 +23,67 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
-            barreras.Add(new Obstaculo(new Point(1*k,1*k),1*k,3*k,new Pen(Color.Blue),Color.Blue));
-            barreras.Add(new Obstaculo(new Point(200, 230), 10, 30, new Pen(Color.Blue), Color.Blue));
-            barreras.Add(new Obstaculo(new Point(180, 150), 40, 10, new Pen(Color.Blue), Color.Blue));
-            barreras.Add(new Obstaculo(new Point(80, 150), 10, 30, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(1 * k, 1 * k), 1 * k, 3 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(7 * k, 0), 3 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(13 * k, 0), 3 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(24 * k, 0 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(4 * k, 2 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(13 * k, 2 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(1 * k, 5 * k), 1 * k, 4 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(4 * k, 4 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(7 * k, 3 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(8 * k, 3 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(10 * k, 3 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(12 * k, 4 * k), 3 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(17 * k, 4 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(18 * k, 4 * k), 2 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(23 * k, 4 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(16 * k, 6 * k), 1 * k, 3 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(21 * k, 6 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(5 * k, 8 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(6 * k, 8 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(8 * k, 9 * k), 3 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(12 * k, 8 * k), 3 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(1 * k, 10 * k), 1 * k, 5 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(5 * k, 11 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(6 * k, 12 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(10 * k, 12 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(11 * k, 12 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(16 * k, 12 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(12 * k, 10 * k), 3 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(19 * k, 10 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(20 * k, 11 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(24 * k, 12 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(5 * k, 14 * k), 2 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(7 * k, 15 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(14 * k, 14 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(19 * k, 14 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(10 * k, 16 * k), 3 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(5 * k, 17 * k), 2 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(10 * k, 18 * k), 3 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(13 * k, 19 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(16 * k, 17 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(19 * k, 17 * k), 3 * k, 3 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(4 * k, 19 * k), 1 * k, 4 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(1 * k, 22 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(6 * k, 20 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(9 * k, 20 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(10 * k, 21 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(16 * k, 20 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(22 * k, 21 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(19 * k, 22 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(8 * k, 22 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(8 * k, 23 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(4 * k, 24 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(6 * k, 23 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(9 * k, 24 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(12 * k, 23 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(14 * k, 24 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(15 * k, 23 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(16 * k, 23 * k), 1 * k, 2 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(17 * k, 24 * k), 1 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+            barreras.Add(new Obstaculo(new Point(23 * k, 24 * k), 2 * k, 1 * k, new Pen(Color.Blue), Color.Blue));
+
                     }
 
         private void Form1_Load(object sender, EventArgs e)
