@@ -84,25 +84,25 @@ namespace WindowsFormsApplication1
         }
         public void Colicion(Cuadro cuadro)
         {
-            if (cuadro.posicion.X>=this.posicion.X && ((cuadro.posicion.X)+cuadro.lado) <= (this.posicion.X + lado) && (cuadro.posicion.Y+cuadro.lado)==this.posicion.Y) 
+            if (cuadro.direccion==Cuadro.Direccion.abajo && cuadro.posicion.X>=this.posicion.X && ((cuadro.posicion.X)+cuadro.lado) <= (this.posicion.X + lado) && (cuadro.posicion.Y+cuadro.lado)==this.posicion.Y) 
             {
                 cuadro.estado = Cuadro.Estado.Estatico;
                 cuadro.direccion = Cuadro.Direccion.ninguna;
                 cuadro.posicion.Y--;       
             }
-            if (cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && (cuadro.posicion.X + cuadro.lado) == this.posicion.X)
+            if (cuadro.direccion == Cuadro.Direccion.derecha && cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && (cuadro.posicion.X + cuadro.lado) == this.posicion.X)
             {
                 cuadro.estado = Cuadro.Estado.Estatico;
                 cuadro.direccion = Cuadro.Direccion.ninguna;
                 cuadro.posicion.X--; 
             }
-            if (cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && cuadro.posicion.X == (this.posicion.X+lado))
+            if (cuadro.direccion == Cuadro.Direccion.izquierda && cuadro.posicion.Y >= this.posicion.Y && (cuadro.posicion.Y + cuadro.lado) <= (this.posicion.Y + altura) && cuadro.posicion.X == (this.posicion.X + lado))
             {
                 cuadro.estado = Cuadro.Estado.Estatico;
                 cuadro.direccion = Cuadro.Direccion.ninguna;
                 cuadro.posicion.X++;
             }
-            if (cuadro.posicion.X >= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) <= (this.posicion.X + lado) && cuadro.posicion.Y == (this.posicion.Y+altura))
+            if (cuadro.direccion == Cuadro.Direccion.arriba && cuadro.posicion.X >= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) <= (this.posicion.X + lado) && cuadro.posicion.Y == (this.posicion.Y + altura))
             {
                 cuadro.estado = Cuadro.Estado.Estatico;
                 cuadro.direccion = Cuadro.Direccion.ninguna;

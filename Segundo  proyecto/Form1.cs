@@ -152,22 +152,18 @@ namespace WindowsFormsApplication1
             { direccion = Cuadro.Direccion.ninguna;
                 c.estado = Cuadro.Estado.Estatico;
             }
+            Timer a = new Timer();
+            
+            
             for (int x = 0; x < 626; x++)
-            {
-                Timer a = new Timer();
-                do
-                {
-                    a.Start();
-                    a.Interval++;
-                }while (a.Interval == 10000);          
+            {   a.Start();
+            a.Interval = 10000;
                 c.movimiento(direccion);
                 foreach (Obstaculo b in barreras)
                     b.Colicion(c);
                 f.End(c);
                 escenario.Dead(c);
-                if(x%2==0)
-                    this.Refresh(); 
-                a.Dispose();
+                this.Invalidate(new Rectangle(c.posicion.X,c.posicion.Y,c.lado,c.lado)); 
                  if (c.estado == Cuadro.Estado.Estatico)
                     break;
                  if (c.estado == Cuadro.Estado.Ganar)
