@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
         public int lado;
         public Pen contorno;
         public Color fondo;
+        
         public Elemento(Point p,int l,Pen c,Color f)
         {
             posicion = p; lado = l; contorno = c; fondo = f;
@@ -23,7 +24,7 @@ namespace WindowsFormsApplication1
 
     public  class Cuadro:Elemento
     {
-        public enum Estado { Estatico, Movimiento};
+        public enum Estado { Estatico, Movimiento,Ganar,Perder};
         public enum Direccion {arriba,abajo,derecha,izquierda,ninguna}
         public Estado estado;
         public Direccion direccion;
@@ -35,7 +36,7 @@ namespace WindowsFormsApplication1
 
         public void Draw(PaintEventArgs e)
         {
-            //Image n=Image.FromFile("C:/Documents and Settings/ruben/Mis documentos/Mis imágenes/PiezaAzul.png");
+            //Image n=Image.FromFile("C:/Documents and Settings/ruben/Mis documentos/Mis imÃ¡genes/PiezaAzul.png");
             //e.Graphics.DrawImage(n, posicion.X, posicion.Y, lado+30, lado+30);
             //e.Graphics.DrawRectangle(contorno, posicion.X, posicion.Y, lado, lado);
             e.Graphics.FillRectangle(new SolidBrush(fondo), posicion.X, posicion.Y, lado, lado);
@@ -111,8 +112,63 @@ namespace WindowsFormsApplication1
             { }; 
  
         }
+       
 
         
     }
+    public class Meta : Elemento
+    {
+        int altura;
+        public Meta(Point p, int l, int al, Pen c, Color f)
+            : base(p, l, c, f)
+        {
+            this.altura = al;
+        }
+        public void Draw(PaintEventArgs e)
+        {
+            //e.Graphics.DrawRectangle(contorno, posicion.X, posicion.Y, lado,altura);
+            e.Graphics.FillRectangle(new SolidBrush(fondo), posicion.X, posicion.Y, lado, altura);
+        }
+        public void End(Cuadro cuadro)
+        {
+            if (cuadro.posicion.X >= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) <= (this.posicion.X + lado) && 
+                cuadro.posicion.Y >= this.posicion.Y && ((cuadro.posicion.Y) + cuadro.lado) <= (this.posicion.Y + lado))
+            {
+                cuadro.estado = Cuadro.Estado.Ganar;
+                cuadro.posicion.X = this.posicion.X+5;
+                cuadro.posicion.Y = this.posicion.Y + 5;
+                
+            }
+        }
+    }
+    public class Escenario : Elemento
+    {
+        int altura;
+        public Escenario(Point p, int l, int al, Pen c, Color f)
+            : base(p, l, c, f)
+        {
+            this.altura = al;
+        }
+        public void Draw(PaintEventArgs e)
+        {
+            //e.Graphics.DrawRectangle(contorno, posicion.X, posicion.Y, lado,altura);
+            e.Graphics.FillRectangle(new SolidBrush(fondo), posicion.X, posicion.Y, lado, altura);
+        }
+        public void Dead(Cuadro cuadro)
+        {
+            //if (cuadro.posicion.X <= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) >= (this.posicion.X + lado) &&
+              //  cuadro.posicion.Y <= this.posicion.Y && ((cuadro.posicion.Y) + cuadro.lado) >= (this.posicion.Y + lado))
+            
+                //if (cuadro.posicion.X>this.posicion.X ||(cuadro.posicion.X+cuadro.lado)<this.posicion.X ||cuadro.posicion.Y>this.posicion.Y ||(cuadro.posicion.Y+cuadro.lado)<this.posicion.Y) 
+            if (cuadro.posicion.X >= this.posicion.X && ((cuadro.posicion.X) + cuadro.lado) <= (this.posicion.X + lado) &&
+                cuadro.posicion.Y >= this.posicion.Y && ((cuadro.posicion.Y) + cuadro.lado) <= (this.posicion.Y + lado))
+            {
 
+
+            }
+            else { cuadro.estado = Cuadro.Estado.Perder; }            
+
+            
+        }
+    }
 }
