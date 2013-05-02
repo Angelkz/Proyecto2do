@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
 
     public  class Cuadro:Elemento
     {
-        public enum Estado { Estatico, Movimiento,Ganar,Perder};
+        public enum Estado {Estatico,Movimiento,Ganar,Perder};
         public enum Direccion {arriba,abajo,derecha,izquierda,ninguna}
         public Estado estado;
         public Direccion direccion;
@@ -135,8 +135,8 @@ namespace WindowsFormsApplication1
                 cuadro.posicion.Y >= this.posicion.Y && ((cuadro.posicion.Y) + cuadro.lado) <= (this.posicion.Y + lado))
             {
                 cuadro.estado = Cuadro.Estado.Ganar;
-                cuadro.posicion.X = this.posicion.X+5;
-                cuadro.posicion.Y = this.posicion.Y + 5;
+                cuadro.posicion.X = this.posicion.X+1;
+                cuadro.posicion.Y = this.posicion.Y + 1;
                 
             }
         }
@@ -166,9 +166,7 @@ namespace WindowsFormsApplication1
 
 
             }
-            else { cuadro.estado = Cuadro.Estado.Perder; }            
-
-            
+            else { cuadro.estado = Cuadro.Estado.Perder; }                
         }
     }
 }

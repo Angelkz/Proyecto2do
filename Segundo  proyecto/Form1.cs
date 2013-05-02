@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
         public Meta f = new Meta(new Point(325, 575), 25, 25, new Pen(Color.Red), Color.Red);
         public Point inicio = new Point(276, 26);
         public Escenario escenario = new Escenario(new Point(0, 0), 625, 625, new Pen(Color.Gray), Color.White);
+        public int Score;
         
         
         public Form1()
@@ -99,7 +100,9 @@ namespace WindowsFormsApplication1
             c.Draw(e);
             f.Draw(e);
             foreach (Obstaculo b in barreras)
-                b.Draw(e);
+            b.Draw(e);
+            label1.Text = "Deaths: " + Score;
+
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -159,31 +162,36 @@ namespace WindowsFormsApplication1
                 do
                 {
                     a.Start();
-                    a.Interval++;
+                    a.Interval+=1;
                 }while (a.Interval == 10000);          
-                c.movimiento(direccion);
-                foreach (Obstaculo b in barreras)
+                    c.movimiento(direccion);
+                    foreach (Obstaculo b in barreras)
                     b.Colicion(c);
-                f.End(c);
-                escenario.Dead(c);
-                if(x%5==0)
+                    f.End(c);
+                    escenario.Dead(c);
+                    if(x%5==0)
                     this.Refresh(); 
-                a.Dispose();
+                    a.Dispose();
                  if (c.estado == Cuadro.Estado.Estatico)
                     break;
                  if (c.estado == Cuadro.Estado.Ganar)
                  {
                      MessageBox.Show("Felicidades desperdiciaste 2 segundos de tu vida");
+                     c.posicion = inicio;
+                     this.Refresh();
                      break;
                  }
                 if (c.estado == Cuadro.Estado.Perder)
-                 {   MessageBox.Show("Felicidades desperdiciaste 2 segundos de tu vida para perder >:-L");
-                 c.posicion = inicio;
-                 this.Refresh();
+                 {   
+                    MessageBox.Show("Felicidades desperdiciaste 2 segundos de tu vida para perder >:-L");
+                    c.posicion = inicio;
+                    Score += 1;
+                    this.Refresh();
                     break;
                  }
             }
 
         }
+
     }
 }
